@@ -140,14 +140,26 @@ public class CampaignController {
         Campaign campaign = campaignDao.selectById(campaignId);
         UserDao userDao = domaProvider.getDao(UserDao.class);
         User user = userDao.selectByUserId(campaign.getCreateUserId());
-
+        int signatureCount = 0;
+        int rest =0;
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);
-        int signatureCount = signatureDao.countByCampaignId(campaignId);
+        signatureCount = signatureDao.countByCampaignId(campaignId);
 
+        if((campaign.getGoal()-signatureDao.countByCampaignId(campaignId))>0)
+        {
+            int change = signatureDao.countByCampaignId(campaignId);
+            int change1 = new Integer(campaign.getGoal().toString());
+            rest = change1 - change;
+        }
+        if((campaign.getGoal()-signatureDao.countByCampaignId(campaignId))<=0)
+        {
+             rest = 0;
+        }
         return templateEngine.render("campaign/index",
                 "campaign", campaign,
                 "user", user,
                 "signatureCount", signatureCount,
+                "rest", rest,
                 "signature", form,
                 "message", message
         );
