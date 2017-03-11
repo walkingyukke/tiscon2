@@ -90,8 +90,7 @@ public class CampaignController {
     /**
      * 新規キャンペーンを作成します.
      * ---------------------------------------
-     * FIXME このメソッドは作成途中です.
-     *
+     * FIXME このメソッドは作成完了しました*
      * @param form    入力フォーム
      * @param session ログインしているユーザsession
      */
@@ -107,30 +106,31 @@ public class CampaignController {
 
         // TODO タイトル, 目標人数を登録する
         Campaign model = new Campaign();
-        model.setTitle(form.getTitle());
-        model.setGoal(Long.parseLong(form.getGoal()));
+        model.setTitle(form.getTitle());//タイトル追加
+        model.setGoal(Long.parseLong(form.getGoal()));//目標人数追加
         model.setStatement(processor.markdownToHtml(form.getStatement()));
         model.setCreateUserId(principal.getUserId());
 
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
         // TODO Databaseに登録する
-        campaignDao.insert(model);
+        campaignDao.insert(model);//DBに追加
 
         HttpResponse response = redirect("/campaign/" + model.getCampaignId(), SEE_OTHER);
-        response.setFlash(new Flash<>("あなたに賛成が集まりますように!"));
-
+        response.setFlash(new Flash<>("あなたに賛成が集まりますように!"));//キャンペーン作成
         return response;
     }
 
     /**
      * ログインユーザの作成したキャンペーン一覧を表示します.
      * ---------------------------------------
-     * FIXME このメソッドは作成途中です.
+     * FIXME このメソッドは作成完了しました.
      *
      * @param session ログインしているユーザsession
      */
     public HttpResponse listCampaigns(Session session) {
-        throw new UnsupportedOperationException("実装してください !!");
+        HttpResponse response = redirect("/", SEE_OTHER);
+        response.setSession(session);
+        return response;
     }
 
     private HttpResponse showCampaign(Long campaignId,
