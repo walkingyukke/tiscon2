@@ -107,14 +107,17 @@ public class CampaignController {
 
         // TODO タイトル, 目標人数を登録する
         Campaign model = new Campaign();
+        model.setTitle(form.getTitle());
+        model.setGoal(Long.parseLong(form.getGoal()));
         model.setStatement(processor.markdownToHtml(form.getStatement()));
         model.setCreateUserId(principal.getUserId());
 
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
         // TODO Databaseに登録する
+        campaignDao.insert(model);
 
         HttpResponse response = redirect("/campaign/" + model.getCampaignId(), SEE_OTHER);
-        response.setFlash(new Flash<>(""/* TODO: キャンペーンが新規作成できた旨のメッセージを生成する */));
+        response.setFlash(new Flash<>("あなたに賛成が集まりますように!"));
 
         return response;
     }
