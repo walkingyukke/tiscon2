@@ -16,7 +16,7 @@ public class V4__InsertUser implements JdbcMigration {
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, 0L);
-            stmt.setString(2, "kawasima");
+            stmt.setString(2, "Obama ");
             stmt.setString(3, "");
             stmt.setString(4, "sample@tis.co.jp");
             stmt.setString(5, "P@ss1");
