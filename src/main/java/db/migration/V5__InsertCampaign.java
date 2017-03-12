@@ -19,11 +19,11 @@ public class V5__InsertCampaign implements JdbcMigration {
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, 1L);
-            stmt.setString(2, "開発に必要なサイトはプロキシでのブロックをやめたい！");
+            stmt.setString(2, "アメリカを変えたい！！　");
             stmt.setString(3, processor.markdownToHtml(
-                    "## 我々の手でエンジニアを守りましょう！\n" +
+                    "## 我々の手でアメリカを偉大な国に！\n" +
                             "\n" +
-                            "エンジニアを絶滅から救うために、以下のことを実現させましょう！\n" +
+                            "アメリカを偉大な国にするために、以下のことを実現させましょう！\n" +
                             "\n" +
                             "- 全社で使えるチャットを導入します。\n" +
                             "- フリーWi-Fiを使えるスポットを増やします。\n" +

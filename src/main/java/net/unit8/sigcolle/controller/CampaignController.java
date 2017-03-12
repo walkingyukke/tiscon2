@@ -75,7 +75,7 @@ public class CampaignController {
         signatureDao.insert(signature);
 
         HttpResponse response = redirect("/campaign/" + form.getCampaignId(), SEE_OTHER);
-        response.setFlash(new Flash<>("ご賛同ありがとうございました！"));
+        response.setFlash(new Flash<>("ＹＥＳ！！　Ｗｅ　ｃａｎ　！！ 　"));
         return response;
     }
 
@@ -119,7 +119,7 @@ public class CampaignController {
         campaignDao.insert(model);//DBに追加
 
         HttpResponse response = redirect("/campaign/" + model.getCampaignId(), SEE_OTHER);
-        response.setFlash(new Flash<>("あなたに賛成が集まりますように!"));//キャンペーン作成
+        response.setFlash(new Flash<>("ＹＥＳ！！　Ｗｅ　ｃａｎ　！！"));//キャンペーン作成
         return response;
     }
 
