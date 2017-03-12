@@ -35,6 +35,7 @@ public class CampaignController {
     @Inject
     private DomaProvider domaProvider;
 
+
     /**
      * キャンペーン詳細画面表示.
      *
@@ -111,6 +112,8 @@ public class CampaignController {
         model.setStatement(processor.markdownToHtml(form.getStatement()));
         model.setCreateUserId(principal.getUserId());
 
+
+
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
         // TODO Databaseに登録する
         campaignDao.insert(model);//DBに追加
@@ -144,7 +147,6 @@ public class CampaignController {
         int rest =0;
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);
         signatureCount = signatureDao.countByCampaignId(campaignId);
-
         if((campaign.getGoal()-signatureDao.countByCampaignId(campaignId))>0)
         {
             int change = signatureDao.countByCampaignId(campaignId);
@@ -155,6 +157,9 @@ public class CampaignController {
         {
              rest = 0;
         }
+
+
+
         return templateEngine.render("campaign/index",
                 "campaign", campaign,
                 "user", user,

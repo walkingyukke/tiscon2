@@ -17,9 +17,10 @@
             </div>
             <div class="ui information container center aligned ">
                 <h1 class="ui header">SIG COLLE</h1>
-                <h2>キャンペーン一覧</h2>
+                <h2>キャンペーン一覧(現時点での賛同者/必要賛同者)</h2>
                 <div th:each="campaign : ${campaigns}">
                     <a class="campaigns" th:href="@{~/campaign/{id}(id=${campaign.campaignId})}" th:text="${campaign.campaignId} + ':' + ${campaign.title}">title</a>
+                    <a class="campaigns" th:href="@{~/campaign/{id}(id=${campaign.campaignId})}" th:text=" '(' + ${campaign.signatureCount} + '/' + ${campaign.goal}+ ')' "></a>
                 </div>
             </div>
         </div>

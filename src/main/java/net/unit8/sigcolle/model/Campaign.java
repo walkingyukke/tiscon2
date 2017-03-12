@@ -25,5 +25,7 @@ public class Campaign implements Serializable {
 
     private Long goal;
 
+    private int signatureCount;
+
     private Long createUserId;
 }
