@@ -27,16 +27,16 @@ xmlns:th="http://www.thymeleaf.org">
                         <div class="statement" th:utext="${campaign.statement}" ></div>
                     </div>
                     <div class="six wide column">
-                        <h2>今すぐ賛同</h2>
+                        <h2>今すぐ投票</h2>
                         <p>
-                            <span th:text="${signatureCount}">345</span>人の賛同
+                            <span th:text="${signatureCount}">345</span>人の投票
                         </p>
                         <div class="ui red progress">
                             <div class="bar" th:style="${'width:' + (signatureCount * 100 / campaign.goal) + '%'}"></div>
                         </div>
                         <p>
                             <span th:text="${campaign.goal}">1000</span>人まで残り
-                            <span th:text="${rest}">1</span>人の賛同者が必要です！
+                            <span th:text="${rest}">1</span>人の投票者が必要です！
                         </p>
 
                         <form class="ui form" method="post" th:action="@{~/campaign/{id}(id=${campaign.campaignId})}" th:classappend="${signature.hasErrors()} ? 'error'">
@@ -53,7 +53,7 @@ xmlns:th="http://www.thymeleaf.org">
                                     <li th:each="message : ${signature.getErrors('signatureComment')}" th:text="${message}"></li>
                                 </ul>
                             </div>
-                            <button class="ui fluid red button">賛同する</button>
+                            <button class="ui fluid red button">投票する</button>
                         </form>
                     </div>
                 </div>
