@@ -19,7 +19,7 @@
                 <h1 class="ui header">SIG COLLE</h1>
                 <h2>みんなの   Ｗｅ can do it !  </h2>
                 <div th:each="campaign : ${campaigns}">
-                    <a class="campaigns" th:href="@{~/campaign/{id}(id=${campaign.campaignId})}" th:text="${campaign.title}">title</a>
+                    <a class="campaigns" th:href="@{~/campaign/{id}(id=${campaign.campaignId})}" th:text="${campaign.campaignId} + ':' + ${campaign.title}">title</a>
                 </div>
             </div>
         </div>

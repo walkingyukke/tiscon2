@@ -41,6 +41,7 @@ xmlns:th="http://www.thymeleaf.org">
 
                         <form class="ui form" method="post" th:action="@{~/campaign/{id}(id=${campaign.campaignId})}" th:classappend="${signature.hasErrors()} ? 'error'">
                             <div class="field" th:classappend="${signature.hasErrors('name')} ? 'error'">
+                                <label><font size="5">社員番号</font> </label>
                                 <input type="text" name="name" placeholder="氏名" th:value="${session != null and session.principal != null} ? ${session.principal.userName} : ${signature.name}" />
                                 <ul class="ui pointing red basic label" th:if="${signature.hasErrors('name')}">
                                     <li th:each="message : ${signature.getErrors('name')}" th:text="${message}"></li>
